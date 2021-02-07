@@ -1,5 +1,8 @@
 package epam.task.third.data;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -7,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataReader {
-
+    private static final Logger LOGGER = LogManager.getLogger();
     public List<String> read(String filename) throws DataException {
         BufferedReader bufferedReader = null;
         ArrayList<String> strings = new ArrayList<>();
@@ -26,7 +29,7 @@ public class DataReader {
                 try {
                     bufferedReader.close();
                 } catch (IOException e) {
-                    e.printStackTrace(); //todo: logger
+                    LOGGER.error(e.getMessage(),e); //todo: logger
                 }
             }
         }
