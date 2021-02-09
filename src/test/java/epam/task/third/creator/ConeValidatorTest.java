@@ -1,6 +1,7 @@
-package epam.task.third.data;
+package epam.task.third.creator;
 
 
+import epam.task.third.creator.ConeValidator;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -10,7 +11,7 @@ public class ConeValidatorTest {
                                                 "4.0";
     private static final String INVALID_STRING =  "2.0 2.0 0.0 " +
             "2.0 2.0 0.0 " +
-            "4.0z";
+            "-4.0";
 
     @Test
     public void testShouldValidateStringWhenStringIsValid(){
@@ -32,7 +33,7 @@ public class ConeValidatorTest {
         boolean actual = coneValidator.validate(INVALID_STRING);
 
         //than
-        Assert.assertTrue(actual);
+        Assert.assertFalse(actual);
     }
 
 }

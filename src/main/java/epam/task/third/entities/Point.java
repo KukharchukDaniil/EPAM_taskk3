@@ -52,6 +52,15 @@ public class Point {
     }
 
     @Override
+    public String toString() {
+        return "Point{" +
+                "xCoordinate=" + xCoordinate +
+                ", yCoordinate=" + yCoordinate +
+                ", zCoordinate=" + zCoordinate +
+                '}';
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(xCoordinate, yCoordinate, zCoordinate);
     }

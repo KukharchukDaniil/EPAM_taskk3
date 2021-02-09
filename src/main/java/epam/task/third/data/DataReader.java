@@ -29,7 +29,7 @@ public class DataReader {
                 try {
                     bufferedReader.close();
                 } catch (IOException e) {
-                    LOGGER.error(e.getMessage(),e); //todo: logger
+                    LOGGER.error(e.getMessage(),e);
                 }
             }
         }

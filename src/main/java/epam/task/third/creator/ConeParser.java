@@ -1,4 +1,4 @@
-package epam.task.third.data;
+package epam.task.third.creator;
 
 import epam.task.third.entities.Cone;
 import epam.task.third.entities.Point;
