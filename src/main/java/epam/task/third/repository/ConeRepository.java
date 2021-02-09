@@ -1,30 +1,29 @@
 package epam.task.third.repository;
 
 import epam.task.third.entities.Cone;
-import epam.task.third.entities.Point;
 import epam.task.third.generator.IdGenerator;
 import epam.task.third.specifications.edit.ConeEditSpecification;
+import epam.task.third.specifications.sorting.ConeSortingSpecification;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ConeRepository {
 
     private Map<Integer, Cone> coneMap = new HashMap<>();
-    private IdGenerator generator = IdGenerator.getGenerator();
+    private IdGenerator generator = IdGenerator.getInstance();
 
+    public ConeRepository(){}
     public ConeRepository(Map<Integer, Cone> coneMap) {
         this.coneMap = coneMap;
-        this.generator = IdGenerator.getGenerator();
+        this.generator = IdGenerator.getInstance();
     }
 
-    public void addCone(Cone cone) {
-        Integer id = generator.getId();
-        Point baseCentre = cone.getBaseCentre();
-        Point apexPoint = cone.getApexPoint();
-        Double radius = cone.getRadius();
-        Cone identifiedCone = new Cone(baseCentre,apexPoint,radius,id);
-        coneMap.put(id,identifiedCone);
+    public void addCone(Cone cone) throws CloneNotSupportedException {
+        Cone clonedCone = (Cone) cone.clone();
+        coneMap.put(clonedCone.getId(), clonedCone);
     }
 
     public void removeCone(Integer id){
@@ -37,6 +36,16 @@ public class ConeRepository {
                 editSpecification.edit(mapCone);
             }
         }
+    }
+
+    public List<Cone> query(ConeSortingSpecification specification) {
+        List<Cone> cones = new ArrayList<>();
+        for (Cone value : coneMap.values()) {
+            if(specification.isSpecified(value)){
+                cones.add(value);
+            }
+        }
+        return cones;
     }
 
 }

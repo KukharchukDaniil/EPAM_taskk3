@@ -3,16 +3,16 @@ package epam.task.third.generator;
 public class IdGenerator {
 
     private static final Integer DEFAULT_ID = 0;
-    private static IdGenerator generator;
+    private static IdGenerator instance;
     private Integer Id = DEFAULT_ID;
 
     private IdGenerator() {}
 
-    public static IdGenerator getGenerator() {
-        if(generator == null) {
-            generator = new IdGenerator();
+    public static IdGenerator getInstance() {
+        if(instance == null) {
+            instance = new IdGenerator();
         }
-        return generator;
+        return instance;
     }
 
     public Integer getId(){

@@ -2,7 +2,7 @@ package epam.task.third.entities;
 
 import java.util.Objects;
 
-public class Cone {
+public class Cone implements Cloneable{
     private static final Integer DEFAULT_ID = 0;
     private Point baseCentre;
     private Point apexPoint;
@@ -13,19 +13,14 @@ public class Cone {
         this.apexPoint = apexPoint;
         this.radius = radius;
     }
-
     public Cone(Point baseCentre, Point apexPoint, Double radius, Integer ID) {
         this.baseCentre = baseCentre;
         this.apexPoint = apexPoint;
         this.radius = radius;
         this.ID = ID;
     }
-    public Integer getID() {
+    public Integer getId() {
         return ID;
-    }
-
-    public void setID(Integer ID) {
-        this.ID = ID;
     }
 
     public Point getBaseCentre() {
@@ -61,13 +56,19 @@ public class Cone {
             return false;
         }
         Cone cone = (Cone) o;
-        return Objects.equals(baseCentre, cone.baseCentre)
-                && Objects.equals(apexPoint, cone.apexPoint)
-                && Objects.equals(radius, cone.radius);
+        return baseCentre.equals(cone.baseCentre)
+                && apexPoint.equals(cone.apexPoint)
+                && radius.equals(cone.radius)
+                && ID.equals(cone.ID);
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(baseCentre, apexPoint, radius);
+        return Objects.hash(baseCentre, apexPoint, radius, ID);
     }
 }

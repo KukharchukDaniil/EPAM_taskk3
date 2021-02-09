@@ -2,6 +2,7 @@ package epam.task.third.creator;
 
 import epam.task.third.entities.Cone;
 import epam.task.third.entities.Point;
+import epam.task.third.generator.IdGenerator;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class ConeParser {

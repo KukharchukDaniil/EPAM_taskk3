@@ -3,14 +3,27 @@ package epam.task.third.specifications.sorting;
 import epam.task.third.entities.Cone;
 
 public class ConeIdSortingSpecification implements ConeSortingSpecification {
-    private final Integer ID;
+    private static final Integer DEFAULT_ID = 0;
+    private Integer id;
+
+    public ConeIdSortingSpecification() {
+        this.id = DEFAULT_ID;
+    }
 
     public ConeIdSortingSpecification(Integer id) {
-        ID = id;
+        this.id = id;
     }
 
     @Override
     public boolean isSpecified(Cone cone) {
-        return ID.equals(cone.getID());
+        return id.equals(cone.getId());
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

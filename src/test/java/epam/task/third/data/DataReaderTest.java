@@ -9,8 +9,8 @@ import java.util.List;
 
 public class DataReaderTest {
     private static final String INVALID_FILE = "src/main/resources/invalid_filename";
-    private static final String VALID_FILE = "src/main/resources/dataReader_test";
-    private static final String EMPTY_FILE = "src/main/resources/emptyFile";
+    private static final String VALID_FILE = "src/test/java/resources/dataReader_test";
+    private static final String EMPTY_FILE = "src/test/java/resources/emptyFile";
 
     @Test
     public void testShouldReadDataWhenFileExistsAndValid() throws DataException {
@@ -22,7 +22,7 @@ public class DataReaderTest {
         //when
         List<String> actual = dataReader.read(VALID_FILE);
 
-        //than
+        //then
         Assert.assertEquals(expected,actual);
     }
     @Test
@@ -34,7 +34,7 @@ public class DataReaderTest {
         //when
         List<String> actual = dataReader.read(EMPTY_FILE);
 
-        //than
+        //then
         Assert.assertEquals(expected,actual);
     }
     @Test(expected = DataException.class)
@@ -44,6 +44,5 @@ public class DataReaderTest {
 
         //when
         List<String> actual = reader.read(INVALID_FILE);
-
     }
 }
